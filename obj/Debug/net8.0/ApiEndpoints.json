@@ -236,22 +236,6 @@
   },
   {
     "ContainingType": "ClinicAPI.Controllers.DoctorsController",
-    "Method": "DownloadCv",
-    "RelativePath": "api/Doctors/{id}/downloadCv",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ClinicAPI.Controllers.DoctorsController",
     "Method": "ExtractCvText",
     "RelativePath": "api/Doctors/{id}/extractCvText",
     "HttpMethod": "POST",
@@ -262,48 +246,6 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ClinicAPI.Controllers.DoctorsController",
-    "Method": "UpdateCV",
-    "RelativePath": "api/Doctors/{id}/uploadCv",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "cv",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ClinicAPI.Controllers.DoctorsController",
-    "Method": "UpdatePhoto",
-    "RelativePath": "api/Doctors/{id}/uploadPhoto",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "photo",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []

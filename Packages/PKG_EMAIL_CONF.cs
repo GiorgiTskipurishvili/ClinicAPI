@@ -69,17 +69,11 @@ namespace ClinicAPI.Packages
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.Add("p_email", OracleDbType.Varchar2).Value = email;
                         command.Parameters.Add("p_code", OracleDbType.Varchar2).Value = code;
-                        //var isValidParam = new OracleParameter("p_isValid", OracleDbType.Int32)
-                        //{
-                        //    Direction = ParameterDirection.Output
-                        //};
-                        //command.Parameters.Add(isValidParam);
+
                         command.Parameters.Add("p_is_valid", OracleDbType.Int32).Direction = ParameterDirection.Output;
 
                         await command.ExecuteNonQueryAsync();
 
-                        //var isValid = Convert.ToInt32(isValidParam.Value);
-                        //return isValid == 1;
                         return Convert.ToInt32(command.Parameters["p_is_valid"].Value.ToString()) == 1;
                     }
                 }

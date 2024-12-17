@@ -17,30 +17,6 @@ namespace ClinicAPI.Controllers
             _pkgDoctors = pkgDoctors;
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> AddDoctor(DoctorDTOs doctorDtos)
-        //{
-        //    if (doctorDtos.Role != 1)
-        //    {
-        //        return BadRequest($"Error Role: This is not {doctorDtos.Role} Role! The role must be set to {Role.Doctor} (1).");
-        //    }
-
-        //    if (doctorDtos.Rating < 0 || doctorDtos.Rating > 5)
-        //    {
-        //        return BadRequest("Error: Rating must be between 0 and 5.");
-        //    }
-
-        //    try
-        //    {
-        //        _pkgDoctors.add_doctor(doctorDtos);
-        //        return Ok($"Doctor added successfully with cv and photo");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, $"Internal server error: {ex.Message}");
-        //    }
-        //}
-
         [HttpPost]
         public async Task<IActionResult> AddDoctor(DoctorDTOs doctorDtos)
         {
@@ -154,53 +130,6 @@ namespace ClinicAPI.Controllers
             }
         }
 
-        [HttpPut("{id}/uploadPhoto")]
-        public IActionResult UpdatePhoto(int id, IFormFile photo)
-        {
-            try
-            {
-                _pkgDoctors.update_photo(id, photo);
-                return Ok("Doctor photo updated successfully.");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-
-        [HttpPut("{id}/uploadCv")]
-        public IActionResult UpdateCV(int id, IFormFile cv)
-        {
-            try
-            {
-                _pkgDoctors.update_cv(id, cv);
-                return Ok("Doctor CV updated successfully.");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-
-
-        [HttpGet("{id}/downloadCv")]
-        public IActionResult DownloadCv(int id)
-        {
-            try
-            {
-                var cvBytes = _pkgDoctors.get_cv_by_doctor_id(id);
-                if (cvBytes == null || cvBytes.Length == 0)
-                {
-                    return NotFound("CV not found for the given doctor ID.");
-                }
-
-                return File(cvBytes, "application/pdf", $"Doctor_{id}_CV.pdf");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "An error occurred while fetching the CV.", error = ex.Message });
-            }
-        }
 
 
 

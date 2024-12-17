@@ -9,26 +9,8 @@ namespace ClinicAPI.Packages
     public class PKG_BOOKINGS : PKG_BASE
     {
 
-        //public void add_booking(Booking booking)
-        //{
-        //    OracleConnection conn = new OracleConnection();
-        //    conn.ConnectionString = ConnStr;
-        //    conn.Open();
 
-        //    OracleCommand cmd = new OracleCommand();
-        //    cmd.Connection = conn;
-        //    cmd.CommandText = "olerning.PKG_GIORGITSK_BOOKINGS.add_booking";
-        //    cmd.CommandType = System.Data.CommandType.Text;
 
-        //    cmd.Parameters.Add("p_user_id", OracleDbType.Int64).Value = booking.UserId;
-        //    cmd.Parameters.Add("p_doctor_id", OracleDbType.Int64).Value = booking.DoctorId;
-        //    cmd.Parameters.Add("p_description", OracleDbType.Varchar2).Value = booking.Description;
-        //    cmd.Parameters.Add("p_booking_time", OracleDbType.Date).Value = booking.BookingTime;
-
-        //    cmd.ExecuteNonQuery();
-        //    conn.Close();
-
-        //}
 
         public void add_booking(BookingDTOs bookingDTOs)
         {
@@ -43,7 +25,7 @@ namespace ClinicAPI.Packages
                     cmd.Parameters.Add("p_user_id", OracleDbType.Int64).Value = bookingDTOs.UserId;
                     cmd.Parameters.Add("p_doctor_id", OracleDbType.Int64).Value = bookingDTOs.DoctorId;
                     cmd.Parameters.Add("p_description", OracleDbType.Varchar2).Value = bookingDTOs.Description;
-                    cmd.Parameters.Add("p_booking_time", OracleDbType.Date).Value = bookingDTOs.CreateBookingTime;
+                    cmd.Parameters.Add("p_booking_time", OracleDbType.Date).Value = bookingDTOs.BookingTime;
 
                     try
                     {
@@ -51,7 +33,7 @@ namespace ClinicAPI.Packages
                     }
                     catch (OracleException ex)
                     {
-                        // Handle exception, log it or rethrow
+
                         throw new Exception("Error adding booking", ex);
                     }
                 }

@@ -103,43 +103,6 @@ namespace ClinicAPI.Packages
 
 
 
-        //public List<Doctor> get_doctors()
-        //{
-        //    List<Doctor> doctors = new List<Doctor>();
-
-        //    using (OracleConnection conn = new OracleConnection(ConnStr))
-        //    {
-        //        conn.Open();
-        //        using (OracleCommand cmd = new OracleCommand("olerning.PKG_GIORGITSK_DOCTORS.get_doctors", conn))
-        //        {
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.Parameters.Add("p_result", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-        //            using (OracleDataReader reader = cmd.ExecuteReader())
-        //            {
-        //                while (reader.Read())
-        //                {
-        //                    doctors.Add(new Doctor
-        //                    {
-        //                        Id = Convert.ToInt64(reader["id"]),
-        //                        FirstName = reader["first_name"].ToString(),
-        //                        LastName = reader["last_name"].ToString(),
-        //                        Email = reader["email"].ToString(),
-        //                        Password = reader["password"].ToString(),
-        //                        PersonalId = Convert.ToInt64(reader["personal_id"]),
-        //                        Category = reader["category"].ToString(),
-        //                        Role = Convert.ToInt32(reader["role"]),
-        //                        Rating = Convert.ToDouble(reader["rating"]),
-        //                        Photo = reader["photo"] != DBNull.Value ? (byte[])reader["photo"] : null,  // Check for null
-        //                        Cv = reader["cv"] != DBNull.Value ? (byte[])reader["cv"] : null          // Check for null
-        //                    });
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    return doctors;
-        //}
 
 
 
@@ -202,45 +165,6 @@ namespace ClinicAPI.Packages
         }
 
 
-        //public Doctor get_doctor_by_id(long doctorId)
-        //{
-        //    Doctor doctor = null;
-
-        //    using (OracleConnection conn = new OracleConnection(ConnStr))
-        //    {
-        //        conn.Open();
-        //        using (OracleCommand cmd = new OracleCommand("olerning.PKG_GIORGITSK_DOCTORS.get_doctor_by_id", conn))
-        //        {
-        //            cmd.CommandType = CommandType.StoredProcedure;
-
-        //            cmd.Parameters.Add("p_id", OracleDbType.Int64).Value = doctorId;
-        //            cmd.Parameters.Add("p_result", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-        //            using (OracleDataReader reader = cmd.ExecuteReader())
-        //            {
-        //                if (reader.Read())
-        //                {
-        //                    doctor = new Doctor
-        //                    {
-        //                        Id = Convert.ToInt64(reader["id"]),
-        //                        FirstName = reader["first_name"].ToString(),
-        //                        LastName = reader["last_name"].ToString(),
-        //                        Email = reader["email"].ToString(),
-        //                        Password = reader["password"].ToString(),
-        //                        PersonalId = Convert.ToInt64(reader["personal_id"]),
-        //                        Category = reader["category"].ToString(),
-        //                        Role = Convert.ToInt32(reader["role"]),
-        //                        Rating = Convert.ToDouble(reader["rating"]),
-        //                        Photo = reader["photo"] != DBNull.Value ? (byte[])reader["photo"] : null,
-        //                        Cv = reader["cv"] != DBNull.Value ? (byte[])reader["cv"] : null
-        //                    };
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    return doctor;
-        //}
 
 
         public Doctor get_doctor_by_id(Doctor doctor)
@@ -287,59 +211,6 @@ namespace ClinicAPI.Packages
 
 
 
-        //public Doctor GetDoctorByEmail(string email)
-        //{
-        //    Doctor doctor = null;
-
-        //    using (OracleConnection conn = new OracleConnection(ConnStr))
-        //    {
-        //        conn.Open();
-
-        //        using (OracleCommand cmd = new OracleCommand("PKG_GIORGITSK_DOCTORS.get_doctor_by_email", conn))
-        //        {
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.Parameters.Add("p_email", OracleDbType.Varchar2).Value = email;
-        //            cmd.Parameters.Add("p_result", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-
-        //            try
-        //            {
-        //                using (OracleDataReader reader = cmd.ExecuteReader())
-        //                {
-        //                    if (reader.Read())
-        //                    {
-        //                        doctor = new Doctor
-        //                        {
-        //                            Id = reader.GetInt32(reader.GetOrdinal("id")),
-        //                            FirstName = reader["first_name"]?.ToString(),
-        //                            LastName = reader["last_name"]?.ToString(),
-        //                            Email = reader["email"]?.ToString(),
-        //                            Password = reader["password"]?.ToString(),
-        //                            PersonalId = reader["personal_id"] != DBNull.Value ? reader.GetInt32(reader.GetOrdinal("personal_id")) : 0,
-        //                            Role = reader["role"] != DBNull.Value ? Convert.ToInt32(reader["role"]) : 0,
-        //                            Category = reader["category"]?.ToString(),
-        //                            Rating = reader["rating"] != DBNull.Value ? Convert.ToDouble(reader["rating"]) : 0.0,
-        //                            Photo = reader["photo"] != DBNull.Value ? (byte[])reader["photo"] : null,
-        //                            Cv = reader["cv"] != DBNull.Value ? (byte[])reader["cv"] : null
-        //                        };
-        //                    }
-        //                }
-        //            }
-        //            catch (OracleException ex)
-        //            {
-        //                // Log or handle Oracle-specific exceptions
-        //                throw new Exception($"Database error: {ex.Message}", ex);
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                // Log or handle other exceptions
-        //                throw new Exception($"An error occurred: {ex.Message}", ex);
-        //            }
-        //        }
-        //    }
-
-        //    return doctor;
-        //}
-
 
         public Doctor get_doctor_by_email(string email)
         {
@@ -381,35 +252,6 @@ namespace ClinicAPI.Packages
         }
 
 
-        public void update_photo(int doctorId, IFormFile photo)
-        {
-            using (var conn = new OracleConnection(ConnStr))
-            {
-                conn.Open();
-                using (var cmd = new OracleCommand("olerning.PKG_GIORGITSK_DOCTORS.update_photo", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_id", OracleDbType.Int32).Value = doctorId;
-                    cmd.Parameters.Add("p_photo", OracleDbType.Blob).Value = GetFileBytes(photo);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public void update_cv(int doctorId, IFormFile cv)
-        {
-            using (var conn = new OracleConnection(ConnStr))
-            {
-                conn.Open();
-                using (var cmd = new OracleCommand("olerning.PKG_GIORGITSK_DOCTORS.update_cv", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_id", OracleDbType.Int32).Value = doctorId;
-                    cmd.Parameters.Add("p_cv", OracleDbType.Blob).Value = GetFileBytes(cv);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
 
 
 

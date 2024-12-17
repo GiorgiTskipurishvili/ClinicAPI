@@ -16,69 +16,6 @@ namespace ClinicAPI.Controllers
             _logger = logger;            
         }
 
-        ////public EmailConfController(IPKG_EMAIL_CONF emailConf)
-        ////{
-        ////    _emailConf = emailConf;
-        ////}
-
-        ////[HttpPost("send-verification")]
-        ////public async Task<IActionResult> SendVerificationCode(string email)
-        ////{
-        ////    var result = await _emailConf.GenerateAndStoreVerificationCodeAsync(email);
-        ////    if (result)
-        ////    {
-        ////        return Ok("Verification code sent successfully.");
-        ////    }
-        ////    return StatusCode(500, "Failed to send verification code.");
-        ////}
-
-        //[HttpPost("send-verification")]
-        //public async Task<IActionResult> SendVerificationCode([FromQuery] string email)
-        //{
-        //    if (string.IsNullOrEmpty(email))
-        //    {
-        //        return BadRequest(new { message = "Email is required." });
-        //    }
-
-        //    var result = await _emailConf.GenerateAndStoreVerificationCodeAsync(email);
-        //    if (result)
-        //    {
-        //        return Ok(new { message = "Verification code sent successfully." });
-        //    }
-
-        //    return StatusCode(500, new { message = "Failed to send verification code." });
-        //}
-
-
-
-        ////[HttpPost("verify-code")]
-        ////public async Task<IActionResult> VerifyCode(string email, string code)
-        ////{
-        ////    var result = await _emailConf.VerifyCodeAsync(email, code);
-        ////    if (result)
-        ////    {
-        ////        return Ok("Verification code is valid.");
-        ////    }
-        ////    return BadRequest("Invalid or expired verification code.");
-        ////}
-
-
-        //[HttpPost("verify-code")]
-        //public async Task<IActionResult> VerifyCode([FromQuery] string email, [FromQuery] string code)
-        //{
-        //    if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(code))
-        //    {
-        //        return BadRequest(new { message = "Email or activation code is required." });
-        //    }
-
-        //    var result = await _emailConf.VerifyCodeAsync(email, code);
-        //    if (result)
-        //    {
-        //        return Ok(new { message = "Activation code is valid." });
-        //    }
-
-        //    return BadRequest(new { message = "Activation code is invalid or expired." });
-        //}
 
 
 

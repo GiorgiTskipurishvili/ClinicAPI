@@ -8,6 +8,6 @@
 
         public string Description { get; set; }
 
-        public DateTime CreateBookingTime { get; set; }
+        public DateTime BookingTime { get; set; } 
     }
 }

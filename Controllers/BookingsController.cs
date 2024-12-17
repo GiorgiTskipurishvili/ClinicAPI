@@ -9,26 +9,39 @@ namespace ClinicAPI.Controllers
     [ApiController]
     public class BookingsController : Controller
     {
+        //[HttpPost("AddBooking")]
+        //public IActionResult AddBooking([FromBody] BookingDTOs bookingDTOs)
+        //{
+        //    try
+        //    {
+        //        PKG_BOOKINGS pkgBookings = new PKG_BOOKINGS();
+        //        pkgBookings.add_booking(bookingDTOs);
+
+        //        return Ok("Booking added successfully.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, $"Internal server error: {ex.Message}");
+        //    }
+        //}
+
         [HttpPost]
         public IActionResult AddBooking([FromBody] BookingDTOs bookingDTOs)
         {
-            if (bookingDTOs == null)
-            {
-                return BadRequest("Booking request cannot be null.");
-            }
-
             try
             {
                 PKG_BOOKINGS pkgBookings = new PKG_BOOKINGS();
                 pkgBookings.add_booking(bookingDTOs);
 
-                return Ok("Booking added successfully.");
+                // Return a JSON object instead of plain text
+                return Ok(new { message = "Booking added successfully." });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return StatusCode(500, new { error = $"Internal server error: {ex.Message}" });
             }
         }
+
 
 
 
@@ -50,21 +63,6 @@ namespace ClinicAPI.Controllers
 
 
 
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteBooking(int id)
-        //{
-        //    try
-        //    {
-        //        PKG_BOOKINGS pkgBookings = new PKG_BOOKINGS();
-        //        pkgBookings.delete_booking(id);
-
-        //        return Ok($"Booking with ID {id} deleted successfully.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, $"Internal server error: {ex.Message}");
-        //    }
-        //}
         [HttpDelete("{id}")]
         public IActionResult DeleteBooking(int id)
         {
@@ -131,24 +129,6 @@ namespace ClinicAPI.Controllers
 
 
 
-        //[HttpGet("{userId}")]
-        //public IActionResult GetBookingByUserId(int userId)
-        //{
-        //    try
-        //    {
-        //        PKG_BOOKINGS pKG_BOOKINGS = new PKG_BOOKINGS();
-        //        Booking booking = pKG_BOOKINGS.get_booking_by_userId(userId);
-        //        if(booking == null)
-        //        {
-        //            return NotFound($"Booking with ID {userId} not found.");
-        //        }
-        //        return Ok(booking);
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        return StatusCode(500, $"Internal server error: {ex.Message}");
-        //    }
-        //}
 
         [HttpGet("user/{userId}")]
         public IActionResult GetByUserId(long userId)
@@ -179,10 +159,10 @@ namespace ClinicAPI.Controllers
                 PKG_BOOKINGS pkgBookings = new PKG_BOOKINGS();
                 var bookings = pkgBookings.get_by_doctorId(doctorId);
 
-                if (bookings.Count == 0)
-                {
-                    return NotFound($"No bookings found for doctor ID {doctorId}.");
-                }
+                //if (bookings.Count == 0)
+                //{
+                //    return NotFound($"No bookings found for doctor ID {doctorId}.");
+                //}
 
                 return Ok(bookings);
             }
