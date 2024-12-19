@@ -36,7 +36,7 @@ namespace ClinicAPI.Packages
             cmd.Parameters.Add("p_last_name", OracleDbType.Varchar2).Value = doctorDtos.LastName;
             cmd.Parameters.Add("p_email", OracleDbType.Varchar2).Value = doctorDtos.Email;
             cmd.Parameters.Add("p_password", OracleDbType.Varchar2).Value = doctorDtos.Password;
-            cmd.Parameters.Add("p_personal_id", OracleDbType.Int32).Value = doctorDtos.PersonalId;
+            cmd.Parameters.Add("p_personal_id", OracleDbType.Int64).Value = doctorDtos.PersonalId;
             //cmd.Parameters.Add("p_category", OracleDbType.Varchar2).Value = doctorDtos.Category;
             cmd.Parameters.Add("p_category", OracleDbType.Varchar2).Value = doctorDtos.Category;
             cmd.Parameters.Add("p_photo", OracleDbType.Blob).Value = GetFileBytes(doctorDtos.Photo);

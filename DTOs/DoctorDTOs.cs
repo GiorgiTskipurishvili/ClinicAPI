@@ -8,7 +8,7 @@ namespace ClinicAPI.DTOs
         public string? LastName { get; set; }
         public string? Email { get; set; }
         public string? Password { get; set; }
-        public int? PersonalId { get; set; }
+        public long? PersonalId { get; set; }
         public int? Role { get; set; } 
         public string? Category { get; set; }
         public int? Rating { get; set; }
